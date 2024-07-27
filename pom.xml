@@ -23,7 +23,7 @@
 		<shiro.version>1.2.1</shiro.version>
 		<ehcache.version>2.6.5</ehcache.version>
 		<hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
-		<jackson.version>2.1.4</jackson.version>
+		<jackson.version>2.15.0</jackson.version>
 		<slf4j.version>1.7.2</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<commons-lang3.version>3.1</commons-lang3.version>
@@ -651,26 +651,26 @@
         				<configuration>
               				<target>
               				    
-								<property name="sql.type" value="mysql" />
-								<property name="dbunit.datatype" value="org.dbunit.ext.mysql.MySqlDataTypeFactory" />
+								<property name="sql.type" value="mysql"/>
+								<property name="dbunit.datatype" value="org.dbunit.ext.mysql.MySqlDataTypeFactory"/>
 								
 								<!--<property name="sql.type" value="oracle" />
 								<property name="dbunit.datatype" value="org.dbunit.ext.oracle.Oracle10DataTypeFactory" /> -->
 																
-								<property file="src/main/resources/application.properties" />
+								<property file="src/main/resources/application.properties"/>
                 				<sql driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" onerror="continue">
-									<classpath refid="maven.test.classpath" />
+									<classpath refid="maven.test.classpath"/>
 									<transaction src="bin/refresh-db/${sql.type}/schema.sql"/>
 								</sql>
 								
-								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath" />
+								<taskdef name="dbunit" classname="org.dbunit.ant.DbUnitTask" classpathref="maven.test.classpath"/>
 								<!--oracle-->
 								<!--<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}" schema="${jdbc.username}">-->
 								<dbunit driver="${jdbc.driver}" url="${jdbc.url}" userid="${jdbc.username}" password="${jdbc.password}">
 									<dbconfig>
-										<property name="datatypeFactory" value="${dbunit.datatype}" />
+										<property name="datatypeFactory" value="${dbunit.datatype}"/>
 									</dbconfig>
-									<classpath refid="maven.test.classpath" />
+									<classpath refid="maven.test.classpath"/>
 									<operation type="CLEAN_INSERT" src="bin/refresh-db/init-data.xml" format="flat" transaction="true"/>
 								</dbunit>
 								
